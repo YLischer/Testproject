@@ -1,4 +1,4 @@
-/*package org;
+package org;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -38,7 +38,7 @@ public class App {
         searchInputFurniture.submit(); //ищем мебель
         Thread.sleep(3000); // Пауза на 3 секунды для загрузки страницы результатов поиска
         WebElement targetButtonFurniture = driver.findElement(By.cssSelector(".product-price__button--without-margin-right[data-subdivisioncode='Т127']"));
-        targetButtonFurniture.click(); // Добавляем мебельв  корзину
+        targetButtonFurniture.click(); // Добавляем мебель в корзину
         Thread.sleep(1000); // Пауза на 1 секунду
         String s1 = ".v-input-search--default input"; // Добавляем уточнение, что ищем именно input внутри блока
         WebElement searchInputWater = driver.findElement(By.cssSelector(s1)); // Используем переменную s
@@ -78,4 +78,4 @@ public class App {
         targetButtonGoToCheckoutfinalstep.click();
         //driver.quit();//закрываем браузер
     }
-}*/
+}

@@ -16,6 +16,7 @@ public class SearchResultsPage {
         this.wait = new WebDriverWait(driver, 20);
     }
 
+
     public void searchAndAddFurniture() {
         // Ожидание появления поля поиска
         WebElement searchInput = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".v-input-search--default input")));

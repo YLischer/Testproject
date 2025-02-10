@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.List;
+import java.util.Random;
 
 public class CartPage {
 
@@ -35,14 +37,23 @@ public class CartPage {
             addressSelectionButton.click();
 
             // Продолжение после выбора адреса
-            continueButton.click();
+            WebElement continueFirstButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[value='Продолжить']")));
+            continueFirstButton.click();
 
             // Выбор способа оплаты
             WebElement paymentMethodButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"paymentForm\"]/div/div[3]/div/div[3]/label")));
             paymentMethodButton.click();
 
             // Продолжение после выбора способа оплаты
-            continueButton.click();
+            WebElement continueSecondButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[value='Продолжить']")));
+            continueSecondButton.click();
+
+            // Выбираем рандомную дату доставки
+            List<WebElement> selectElementDayDelivery = driver.findElements(By.cssSelector("[class$='day']"));
+            int countDayDelivery = selectElementDayDelivery.size();
+            Random rnd = new Random(); // Создаем объект класса Random
+            int randomindex5 = rnd.nextInt(0, countDayDelivery);
+            selectElementDayDelivery.get(randomindex5).click();
 
             // Отказ от сборки мебели
             WebElement furnitureAssemblyRadioButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"deliveryProperties\"]/div[3]/span/div/div/div[2]/div[1]/div[2]/label")));
@@ -53,8 +64,8 @@ public class CartPage {
             fifthStepContinueButton.click();
 
             // Завершение оформления заказа
-            //WebElement finalStepContinueButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"top-subHeader\"]/div[3]/div/div/form/div/div[8]/button[2]")));
-            //finalStepContinueButton.click();
+            WebElement finalStepContinueButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"top-subHeader\"]/div[3]/div/div/form/div/div[8]/button[2]")));
+            finalStepContinueButton.click();
         } catch (Exception e) {
             System.out.println("Ошибка при оформлении заказа: " + e.getMessage());
         }

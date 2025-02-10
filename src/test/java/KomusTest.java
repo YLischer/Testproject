@@ -1,9 +1,10 @@
-package org.pages;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.pages.CartPage;
+import org.pages.LoginPage;
+import org.pages.SearchResultsPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +23,12 @@ public class KomusTest {
         // Логинимся
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("necrolordix@mail.ru", "119270As");
-
+        // Задержка 5 секунд перед добавлением товара в корзину
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            System.out.println("Ошибка при ожидании: " + e.getMessage());
+        }
         // Поиск и добавление товаров
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         searchResultsPage.searchAndAddFurniture();
