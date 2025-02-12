@@ -40,7 +40,7 @@ public class SearchResultsPage {
     public void searchAndAddWater() {
         // Ожидание появления поля поиска
         WebElement searchInput = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".v-input-search--default input")));
-
+        searchInput.clear(); // Очищаем поле перед вводом данных
         // Вводим данные
         searchInput.sendKeys("Вода 19л");
         searchInput.submit();
