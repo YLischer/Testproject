@@ -23,12 +23,10 @@ public class KomusTest {
         // Логинимся
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("necrolordix@mail.ru", "119270As");
+
         // Задержка 5 секунд перед добавлением товара в корзину
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            System.out.println("Ошибка при ожидании: " + e.getMessage());
-        }
+        Thread.sleep(5000);
+
         // Поиск и добавление товаров
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         searchResultsPage.searchAndAddFurniture();

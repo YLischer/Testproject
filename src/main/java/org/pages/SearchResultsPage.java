@@ -22,7 +22,7 @@ public class SearchResultsPage {
         WebElement searchInput = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".v-input-search--default input")));
 
         // Вводим данные
-        searchInput.sendKeys("Шкаф");
+        searchInput.sendKeys("Тумба");
         searchInput.submit();
 
         // Задержка 5 секунд перед добавлением товара в корзину

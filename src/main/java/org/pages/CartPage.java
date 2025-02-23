@@ -32,7 +32,7 @@ public class CartPage {
             WebElement continueButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[value='Продолжить']")));
             continueButton.click();
 
-            // Ожидание появления выбора адреса
+            // Выбор первого адреса из адресной книги
             WebElement addressSelectionButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".radio__title--static.radio__title--white-space-normal")));
             addressSelectionButton.click();
 
@@ -40,7 +40,7 @@ public class CartPage {
             WebElement continueFirstButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[value='Продолжить']")));
             continueFirstButton.click();
 
-            // Выбор способа оплаты
+            // Выбор способа оплаты наличными
             WebElement paymentMethodButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"paymentForm\"]/div/div[3]/div/div[3]/label")));
             paymentMethodButton.click();
 
@@ -55,7 +55,7 @@ public class CartPage {
             int randomindex5 = rnd.nextInt(0, countDayDelivery);
             selectElementDayDelivery.get(randomindex5).click();
 
-            // Отказ от сборки мебели
+            // Отказываемся от сборки мебели
             WebElement furnitureAssemblyRadioButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"deliveryProperties\"]/div[3]/span/div/div/div[2]/div[1]/div[2]/label")));
             furnitureAssemblyRadioButton.click();
 
