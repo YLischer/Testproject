@@ -25,14 +25,17 @@ public class KomusTest {
         loginPage.login("necrolordix@mail.ru", "119270As");
 
         // Задержка 5 секунд перед добавлением товара в корзину
-        Thread.sleep(5000);
+        loginPage.waitMenuAppearence(10);
 
         // Поиск и добавление товаров
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
-        searchResultsPage.searchAndAddFurniture();
+        SearchResultsPage.waitFurnitureAppearence();
+        SearchResultsPage.searchAndAddFurniture();
+        SearchResultsPage.waitCartAppearence();
         searchResultsPage.searchAndAddWater();
 
         // Оформление заказа
+        CartPage.waitCartAppearence();
         CartPage cartPage = new CartPage(driver);
         cartPage.proceedToCheckout();
 

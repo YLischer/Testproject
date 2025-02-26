@@ -25,5 +25,10 @@ public class LoginPage {
         passLoginInput.click();
         passLoginInput.sendKeys(password);
         passLoginInput.submit();
+
+
+    }
+    public void waitMenuAppearence(int timeOut){
+        new WebDriverWait(driver, timeOut).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"account-main-page\"]/div/div[2]/div/a[1]")));
     }
 }

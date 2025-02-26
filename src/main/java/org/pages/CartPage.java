@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class CartPage {
 
-    private final WebDriver driver;
+    private static WebDriver driver = null;
     private final WebDriverWait wait;
 
     public CartPage(WebDriver driver) {
@@ -18,10 +18,13 @@ public class CartPage {
         this.wait = new WebDriverWait(driver, 15);
     }
 
+    public static void waitCartAppearence() {
+    }
+
     public void proceedToCheckout() {
         try {
             WebElement targetButtonGoToCart = driver.findElement(By.cssSelector("[href='/cart/?from=top']"));
-            Thread.sleep(9000); // Пауза на 9 секунд для загрузки страницы корзины
+
             targetButtonGoToCart.click();
 
             // Ожидание появления первой кнопки продолжения
@@ -56,7 +59,7 @@ public class CartPage {
             selectElementDayDelivery.get(randomindex5).click();
 
             // Отказываемся от сборки мебели
-            WebElement furnitureAssemblyRadioButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"deliveryProperties\"]/div[3]/span/div/div/div[2]/div[1]/div[2]/label")));
+            WebElement furnitureAssemblyRadioButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"deliveryProperties\"]/div[3]/span/div/div/div/div[1]/div[2]/label")));
             furnitureAssemblyRadioButton.click();
 
             // Продолжение после отказа от сборки мебели
@@ -69,5 +72,10 @@ public class CartPage {
         } catch (Exception e) {
             System.out.println("Ошибка при оформлении заказа: " + e.getMessage());
         }
+
+    }
+
+    public static void waitCartAppearence(int timeOut) {
+        new WebDriverWait(driver, timeOut).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"cart-summary-app\"]/div/div[5]/button")));
     }
 }
